@@ -18,18 +18,6 @@ def post():
             "data": party
         }))
 
-
-# class Parties:
-#     def party_post():
-#         data = request.get_json()
-#         name = data['name']
-#         logoUrl = data['logoUrl']
-#         hqAddress = data['hqAddress']
-#         new_party = PartyModel().create_party(name, hqAddress, logoUrl)
-#         return make_response(jsonify({
-#             "message": "sucessfully created a new party",
-#             "data": new_party
-#         }), 201)
     
     # @api.route('/partyList', methods=["GET"])
     # def party_get_all():

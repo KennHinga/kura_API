@@ -24,5 +24,4 @@ class PartyModel():
     # def edit_party(self):
     #     pass
 
-    # def delete_party(self):
-    #     pass
+   
