@@ -66,7 +66,7 @@ class Party:
 
 
 class Office:
-    @version_one.route('/offices', methods=['POST'])
+    @version_one.route('/officeList', methods=['POST'])
     def post_office():
         data = request.get_json()
         name = data['name']
@@ -78,3 +78,14 @@ class Office:
             "status": 201,
             "data": office
         }))
+
+    
+    @version_one.route('/officeList', methods=["GET"])
+    def office_get_all():
+        partyList = OfficeModel().get_all_offices()
+        
+        return make_response(jsonify({
+            "status": 200,
+            "message": "this is the partyList",
+            "data": partyList
+        }), 200) 
