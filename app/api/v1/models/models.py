@@ -1,4 +1,8 @@
-parties=[]
+parties= [
+    {"name": "upako", "hqAddress": "soweto", "logoUrl": "logo"},
+    {"name": "bootcamp", "hqAddress": "roysambu", "logoUrl": "logo2"},
+    {"name": "uzito", "hqAddress": "kingstone", "logoUrl": "logo3"}
+]
 
 class PartyModel():
     def __init__(self):
@@ -15,8 +19,8 @@ class PartyModel():
         self.parties.append(party)
         return party
 
-    # def get_all_party(self):
-    #     return selfparties
+    def get_all_parties(self):
+        return self.parties
     
     # def get_one_party(self):
     #     if 
