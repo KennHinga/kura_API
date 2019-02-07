@@ -40,21 +40,21 @@ class Party:
             "data": party
         }), 200)
 
-    # @version_one.route('/partyList/<int:id>', methods=["PATCH"])
-    # def party_put(id):
-    #     data = request.get_json()
-    #     name = data['name']
-    #     hqAddress = data['hqAddress']
-    #     logoUrl = data['logoUrl']
+    @version_one.route('/partyList/<int:id>', methods=["PATCH"])
+    def party_put(id):
+        data = request.get_json()
+        name = data['name']
+        hqAddress = data['hqAddress']
+        logoUrl = data['logoUrl']
         
 
-    #     party = PartyModel().edit_party(id, data)
+        party = PartyModel().edit_party(id, data)
         
-    #     return make_response(jsonify({
-    #         "status": 200,
-    #         "message": "Success:party edited",
-    #         "data": party
-    #     }), 200)
+        return make_response(jsonify({
+            "status": 200,
+            "message": "Success:party edited",
+            "data": party
+        }), 200)
 
     @version_one.route('/partyList/<int:id>', methods=["DELETE"])
     def delete_party(id):
