@@ -1,4 +1,5 @@
 parties= []
+offices= []
 
 class PartyModel():
     def __init__(self):
@@ -41,4 +42,16 @@ class PartyModel():
         for party in self.parties:
             if party['id'] == id:
                 return self.parties.remove(party) 
-   
+
+class OfficeModel():
+    def __init__(self):
+         self.offices =offices  
+    
+    def create_office(self, name, office_type):
+        office = {
+            "id": len(offices)+1,
+            "name": name,
+            "type": office_type,
+        }
+        self.offices.append(office)
+        return office

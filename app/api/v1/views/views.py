@@ -1,5 +1,6 @@
 from flask import Blueprint, request, make_response, jsonify, Response
 from ..models.models import PartyModel
+from ..models.models import OfficeModel
 
 version_one = Blueprint('version_one', __name__, url_prefix='/api/v1')
 
@@ -62,3 +63,18 @@ class Party:
             "status": 200,
             "message": "Deleted"
         }), 200) 
+
+
+class Office:
+    @version_one.route('/offices', methods=['POST'])
+    def post_office():
+        data = request.get_json()
+        name = data['name']
+        office_type = data['office_type']
+
+        office = OfficeModel().create_office(name, office_type)
+
+        return make_response(jsonify({
+            "status": 201,
+            "data": office
+        }))
