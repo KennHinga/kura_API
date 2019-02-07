@@ -58,3 +58,8 @@ class OfficeModel():
     
     def get_all_offices(self):
         return self.offices
+
+    def offices_get_one(self, id):
+        for office in self.offices:
+            if office['id'] == id:
+                return office
