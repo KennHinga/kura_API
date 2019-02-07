@@ -89,3 +89,12 @@ class Office:
             "message": "this is the partyList",
             "data": partyList
         }), 200) 
+
+    @version_one.route('/officeList/<int:id>', methods=["GET"])
+    def get_one_office(id):
+        office = OfficeModel().offices_get_one(id)
+        return make_response(jsonify({
+            "status": 200,
+            "message": "This is the office",
+            "data": office
+        }), 200)
