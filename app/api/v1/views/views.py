@@ -1,11 +1,11 @@
-from flask import Blueprint, request, make_response, jsonify
+from flask import Blueprint, request, make_response, jsonify, Response
 from ..models.models import PartyModel
 
 version_one = Blueprint('version_one', __name__, url_prefix='/api/v1')
 
 
 
-class party:
+class Party:
     @version_one.route('/partyList', methods=['POST'])
     def post():
         data = request.get_json()
@@ -35,15 +35,30 @@ class party:
         party = PartyModel().parties_get_one(id)
         return make_response(jsonify({
             "status": 200,
-            "message": "you have one aprty now",
+            "message": "This is the party",
             "data": party
         }), 200)
 
+    # @version_one.route('/partyList/<int:id>', methods=["PATCH"])
+    # def party_put(id):
+    #     data = request.get_json()
+    #     name = data['name']
+    #     hqAddress = data['hqAddress']
+    #     logoUrl = data['logoUrl']
+        
 
-    # @version_one.route('/partyList/<int:id>', methods=["DELETE"])
-    # def delete_party(id):
-    #     party = PartyModel().delete_party(id)
+    #     party = PartyModel().edit_party(id, data)
+        
     #     return make_response(jsonify({
     #         "status": 200,
-    #         "message": "Deleted"
-    #     }), 200) 
+    #         "message": "Success:party edited",
+    #         "data": party
+    #     }), 200)
+
+    @version_one.route('/partyList/<int:id>', methods=["DELETE"])
+    def delete_party(id):
+        party = PartyModel().party_delete(id)
+        return make_response(jsonify({
+            "status": 200,
+            "message": "Deleted"
+        }), 200) 
