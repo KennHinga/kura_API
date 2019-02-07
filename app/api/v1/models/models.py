@@ -1,8 +1,4 @@
-parties= [
-    {"name": "upako", "hqAddress": "soweto", "logoUrl": "logo"},
-    {"name": "bootcamp", "hqAddress": "roysambu", "logoUrl": "logo2"},
-    {"name": "uzito", "hqAddress": "kingstone", "logoUrl": "logo3"}
-]
+parties= []
 
 class PartyModel():
     def __init__(self):
@@ -11,7 +7,7 @@ class PartyModel():
     def create_party(self, name, hqAddress, logoUrl):
         """ create party method """
         party = {
-            "id": len(self.parties)+1,
+            "id": len(parties)+1,
             "name": name,
             "hqAddress": hqAddress,
             "logoUrl": logoUrl
@@ -22,10 +18,13 @@ class PartyModel():
     def get_all_parties(self):
         return self.parties
     
-    # def get_one_party(self):
-    #     if 
+    def parties_get_one(self, id):
+        for party in self.parties:
+            if party['id'] == id:
+                return party
 
-    # def edit_party(self):
-    #     pass
-
+    # def party_delete(self, id):
+    #     for party in self.parties:
+    #         if party['id'] == id:
+    #             return self.parties.remove(party) 
    

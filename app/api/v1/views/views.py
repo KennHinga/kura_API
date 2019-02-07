@@ -3,21 +3,22 @@ from ..models.models import PartyModel
 
 version_one = Blueprint('version_one', __name__, url_prefix='/api/v1')
 
-@version_one.route('/parties', methods=['POST'])
+
 
 class party:
+    @version_one.route('/partyList', methods=['POST'])
     def post():
-            data = request.get_json()
-            name = data['name']
-            hqAddress = data['hqAddress']
-            logoUrl = data['logoUrl']
+        data = request.get_json()
+        name = data['name']
+        hqAddress = data['hqAddress']
+        logoUrl = data['logoUrl']
 
-            party = PartyModel().create_party(name, hqAddress, logoUrl)
+        party = PartyModel().create_party(name, hqAddress, logoUrl)
 
-            return make_response(jsonify({
-                "status": 201,
-                "data": party
-            }))
+        return make_response(jsonify({
+            "status": 201,
+            "data": party
+        }))
 
 
     @version_one.route('/partyList', methods=["GET"])
@@ -29,11 +30,20 @@ class party:
             "data": partyList
         }), 200) 
 
-# def party_get_one():
-#     pass
+    @version_one.route('/partyList/<int:id>', methods=["GET"])
+    def get_one_party(id):
+        party = PartyModel().parties_get_one(id)
+        return make_response(jsonify({
+            "status": 200,
+            "message": "you have one aprty now",
+            "data": party
+        }), 200)
 
-# def party_put():
-#     pass
 
-# def party_delete():
-#     pass
+    # @version_one.route('/partyList/<int:id>', methods=["DELETE"])
+    # def delete_party(id):
+    #     party = PartyModel().delete_party(id)
+    #     return make_response(jsonify({
+    #         "status": 200,
+    #         "message": "Deleted"
+    #     }), 200) 
