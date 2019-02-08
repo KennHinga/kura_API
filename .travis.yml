@@ -1,3 +1,12 @@
 language: python
-rvm:
- - Python27
+python:
+  - "2.7"
+
+install:
+  - pip install -r requirements.txt
+  - pip install coveralls
+script:
+  - pytest
+  - coverage run --source=app -m pytest && coverage report
+after_success:
+  - coveralls
