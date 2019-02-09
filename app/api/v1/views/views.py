@@ -71,15 +71,14 @@ class Office:
         data = request.get_json()
         name = data['name']
         office_type = data['office_type']
-
-        office = OfficeModel().create_office(name, office_type)
-
+        officeM = OfficeModel()
+        office = officeM.create_office(name, office_type)
+        # print(office)
         return make_response(jsonify({
             "status": 201,
             "data": office
         }))
-
-    
+        
     @version_one.route('/officeList', methods=["GET"])
     def office_get_all():
         partyList = OfficeModel().get_all_offices()

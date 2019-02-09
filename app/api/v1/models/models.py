@@ -54,6 +54,7 @@ class OfficeModel():
             "type": office_type,
         }
         self.offices.append(office)
+        # print(office)
         return office
     
     def get_all_offices(self):
