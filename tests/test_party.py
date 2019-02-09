@@ -15,29 +15,33 @@ class TestParties(unittest.TestCase):
         }
 
     def test_create_party(self):
-        response = self.client().post(path='/partyList', data=json.dumps(self.data), content_type='application/json')
-        self.assertEqual(resp.status_code, 201)
-        
+        response = self.client().post(path='/api/v1/partyList', data=json.dumps(self.data), content_type='application/json')
+        self.assertEqual(response.status_code, 200)  
 
     def test_get_all_parties(self):
-        response = self.client().post(path='/partyList', data=json.dumps(self.data), content_type='application/json')
-        self.assertEqual(resp.status_code, 200)
+        self.client().post(path='/api/v1/partyList', data=json.dumps(self.data), content_type='application/json')
+        response = self.client().get(path='/api/v1/partyList', content_type="application/json")
+        self.assertEqual(response.status_code, 200)
 
     def test_parties_get_one(self):
-        # response = self.client().post(path='/partyList', data=json.dumps(self.data), content_type='application/json')
-        response = self.client().get('/partylist/1', content_type="application/json")
-        self.assertEqual(resp.status_code, 200)
+        self.client().post(path='/api/v1/partyList', data=json.dumps(self.data), content_type='application/json')
+        response = self.client().get(path='/api/v1/partyList/1', content_type="application/json")
+        self.assertEqual(response.status_code, 200)
 
     def test_edit_party(self):
-        response = self.client().post(path='/partyList', data=json.dumps(edit_party.data), content_type='application/json')
-        response = self.client().get('/partyList/1', content_type="application/json")
-        self.assertEqual(resp.status_code, 200)
+        response = self.client().post(path='/api/v1/partyList', data=json.dumps(self.data), content_type='application/json')
+        response = self.client().get(path='/api/v1/partyList/1', content_type="application/json")
+        self.assertEqual(response.status_code, 200)
 
     def test_Party_delete(self):
-        response = self.client().post(path= ('/partyList/1'), content_type= "application/json")
-        self.assertEqual(resp.status_code, 200)
+        response = self.client().post(path='/api/v1/partyList/', data=json.dumps(self.data), content_type= "application/json")
+        response = self.client().delete(path='/api/v1/partyList/1', content_type="application/json")
+        self.assertEqual(response.status_code, 200)
         
 
+    
+    # def tearDown(self):
+    #     parties.clear()
 
 if __name__ == '__main__':
     unnittest.main()
