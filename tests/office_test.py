@@ -15,13 +15,14 @@ class TestOffices(unittest.TestCase):
 
     def test_create_office(self):
         response = self.client().post(path='/api/v1/officeList', data=json.dumps(self.data), content_type='application/json')
-        resp = json.loads(response.data)
         self.assertEqual(response.status_code, 200)
+        self.assertEqual(json.loads(response.data)["message"],"party posted successfully" )
     
     def test_get_all_offices(self):
         self.client().post(path='/api/v1/officeList', data=json.dumps(self.data), content_type='application/json')
         response = self.client().get(path='/api/v1/officeList', content_type="application/json")
         self.assertEqual(response.status_code, 200)
+        self.assertEqual(json.loads(response.data)["message"],"this is the partyList" )
 
     def test_ofices_get_one(self):
         self.client().post(path='/api/v1/officeList', data=json.dumps(self.data), content_type='application/json')
