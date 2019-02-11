@@ -17,7 +17,7 @@ class TestOffices(unittest.TestCase):
         """method to test create_office"""
         response = self.client().post(path='/api/v1/officeList', data=json.dumps(self.data), content_type='application/json')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(json.loads(response.data)["message"],"party posted successfully" )
+        self.assertEqual(json.loads(response.data)["message"],"office posted successfully" )
     
     def test_get_all_offices(self):
         """method to test get_all_offices"""

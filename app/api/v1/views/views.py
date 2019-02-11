@@ -12,11 +12,6 @@ class Party:
 
         data = request.get_json()
 
-        name = data['name']
-        hqAddress = data['hqAddress']
-        logoUrl = data['logoUrl']
-
-
         if not data:
             return{"message": "please provide required details"}, 400
 
@@ -28,6 +23,10 @@ class Party:
 
         if not 'logoUrl' in data.keys():
             return jsonify({"message": "logoUrl not provided"}), 400
+        
+        name = data['name']
+        hqAddress = data['hqAddress']
+        logoUrl = data['logoUrl']
 
         if name== "":
             return make_response(jsonify({"message": "party name must be filled"}),400)
@@ -98,10 +97,10 @@ class Party:
         """method for deleting a party"""
 
         party = PartyModel().party_delete(id)
-        if partyList:
-            return make_response(jsonify({
-                "message": "Deleted"
-            }), 200) 
+        
+        return make_response(jsonify({
+            "message": "Deleted"
+        }), 200) 
 
 class Office:
     @version_one.route('/officeList', methods=['POST'])
