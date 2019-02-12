@@ -40,7 +40,7 @@ class TestParties(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_edit_party(self):
-        
+
         """method to test edit_party"""
 
         response = self.client().post(path='/api/v1/partyList', data=json.dumps(self.data), content_type='application/json')
