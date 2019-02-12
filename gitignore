@@ -1,8 +1,0 @@
-__pycache__/
-.pytest_cache/
-.vscode
-venv/
-app/__pycache__/
-__init__.pyc
-views.pycmodels.pyc
-run.pyc
