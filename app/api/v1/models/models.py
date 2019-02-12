@@ -80,15 +80,15 @@ class OfficeModel():
         # print(office)
         return office
     
-    def get_all_offices(self):
+    def office_get_all(self):
 
         """get all offices model method"""
 
         return self.offices
 
-    def offices_get_one(self, office_id):
+    def get_one_office(self, office_id):
 
-        """get one office model method"""
+        """get one office by its id model method"""
 
         for office in self.offices:
             if office['office_id'] == office_id:
