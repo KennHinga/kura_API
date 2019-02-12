@@ -126,11 +126,11 @@ class Office:
         }))
     
     @version_one.route('/officeList', methods=["GET"])
-    def office_get_all():
+    def get_all_offices():
 
-        """method for getting all offices"""
+        """method for getting all the offices"""
 
-        officeList = OfficeModel().get_all_offices()
+        officeList = OfficeModel().office_get_all()
         
         if officeList:
             return make_response(jsonify({
@@ -140,11 +140,11 @@ class Office:
         return make_response(jsonify({"message":"no offices found"}),400)
 
     @version_one.route('/officeList/<int:id>', methods=["GET"])
-    def get_one_office(id):
+    def ofices_get_one(id):
 
         """method for getting one office by id"""
 
-        office = OfficeModel().offices_get_one(id)
+        office = OfficeModel().get_one_office(id)
 
         if office:
             return make_response(jsonify({
