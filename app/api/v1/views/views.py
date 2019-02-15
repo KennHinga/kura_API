@@ -20,6 +20,9 @@ class Party:
         hqAddress = data['hqAddress']
         logoUrl = data['logoUrl']
 
+        if not data['party_name'].strip().isalpha():
+            return make_response(jsonify({"message":"can only accept party_name with letters only"}), 400)
+
         if party_name== "":
             return make_response(jsonify({"message": "party name must be filled"}),400)
 
@@ -108,6 +111,9 @@ class Office:
 
         office_name = data['office_name']
         office_type = data['office_type']
+
+        if not data['office_name'].strip().isalpha():
+            return make_response(jsonify({"message":"can only accept office_name with letters only"}), 400)
 
         if office_name== "":
             return make_response(jsonify({"message": "office name must be filled"}),400)
